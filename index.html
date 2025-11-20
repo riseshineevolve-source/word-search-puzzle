@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Search - Rise Shine Evolve</title>
+    <title>Word Search Puzzle - Rise Shine Evolve</title>
     <style>
         body {
             box-sizing: border-box;
@@ -156,14 +156,14 @@
         .title {
             font-size: 2.6rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #8A2BE2, #9932CC, #ff69b4);
-            background-size: 200% 200%;
+            background: linear-gradient(45deg, #8A2BE2, #ff69b4, #c71585, #9932CC);
+            background-size: 220% 220%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 10px;
-            animation: titleColorShine 18s ease-in-out infinite;
-            text-shadow: 0 0 18px rgba(138, 43, 226, 0.6), 0 0 28px rgba(255, 105, 180, 0.4);
+            animation: titleColorShine 16s ease-in-out infinite;
+            text-shadow: 0 0 18px rgba(138, 43, 226, 0.55), 0 0 28px rgba(255, 105, 180, 0.35);
             letter-spacing: 2px;
         }
 
@@ -454,15 +454,23 @@
         }
 
         .controls {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 22px;
             margin-bottom: 24px;
-            justify-items: center;
+            align-items: center;
+        }
+
+        .control-row {
+            display: flex;
+            gap: 26px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
         }
 
         .words-control {
-            grid-column: 1 / -1;
+            width: 100%;
         }
 
         .control-group {
@@ -475,19 +483,17 @@
             box-shadow:
                 0 0 35px rgba(138, 43, 226, 0.7),
                 0 0 60px rgba(138, 43, 226, 0.4);
-            max-width: 520px;
+            max-width: 480px;
             width: 100%;
             justify-self: center;
         }
 
         .panel-gold {
-            background: #000000;
-            border: 3px solid #8A2BE2;
+            background: transparent;
+            border: none;
             border-radius: 18px;
-            padding: 14px;
-            box-shadow:
-                0 0 35px rgba(138, 43, 226, 0.7),
-                0 0 60px rgba(138, 43, 226, 0.4);
+            padding: 8px 0;
+            box-shadow: none;
         }
 
         .panel-pink {
@@ -1510,9 +1516,14 @@
                 min-width: 100%;
                 max-width: none;
             }
-            
+
             .controls {
-                grid-template-columns: 1fr;
+                align-items: stretch;
+            }
+
+            .control-row {
+                flex-direction: column;
+                align-items: center;
             }
             
             .mode-selector {
@@ -1566,7 +1577,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1 class="title">Word Search</h1>
+            <h1 class="title">Word Search Puzzle</h1>
             <p class="subtitle">Find all hidden words in the magical letter grid</p>
         </div>
 
@@ -1593,26 +1604,28 @@
                 </div>
             </div>
 
-            <div class="control-group">
-                <div class="panel-gold">
-                    <h3>Difficulty Level</h3>
-                    <div class="button-group panel-pink">
-                        <button class="btn active" data-difficulty="easy">Easy</button>
-                        <button class="btn" data-difficulty="medium">Medium</button>
-                        <button class="btn" data-difficulty="hard">Hard</button>
+            <div class="control-row">
+                <div class="control-group">
+                    <div class="panel-gold">
+                        <h3>Grid Shape</h3>
+                        <div class="button-group panel-pink">
+                            <button class="btn active" data-shape="square">Square</button>
+                            <button class="btn" data-shape="circle">Circle</button>
+                            <button class="btn" data-shape="hexagon">Hexagon</button>
+                            <button class="btn" data-shape="diamond">Diamond</button>
+                            <button class="btn" data-shape="heart">Heart</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="control-group">
-                <div class="panel-gold">
-                    <h3>Grid Shape</h3>
-                    <div class="button-group panel-pink">
-                        <button class="btn active" data-shape="square">Square</button>
-                        <button class="btn" data-shape="circle">Circle</button>
-                        <button class="btn" data-shape="hexagon">Hexagon</button>
-                        <button class="btn" data-shape="diamond">Diamond</button>
-                        <button class="btn" data-shape="heart">Heart</button>
+                <div class="control-group">
+                    <div class="panel-gold">
+                        <h3>Difficulty Level</h3>
+                        <div class="button-group panel-pink">
+                            <button class="btn active" data-difficulty="easy">Easy</button>
+                            <button class="btn" data-difficulty="medium">Medium</button>
+                            <button class="btn" data-difficulty="hard">Hard</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1654,7 +1667,7 @@
 
     <!-- Wersja do wydrukowania -->
     <div class="print-version" id="printVersion">
-        <h1>Word Search</h1>
+        <h1>Word Search Puzzle</h1>
         <div class="print-content">
             <div class="print-puzzle-section">
                 <div id="printWordSearch"></div>
@@ -1857,10 +1870,7 @@
                 
                 if (onlineAnswerButtons) onlineAnswerButtons.style.display = 'block';
                 
-                errorDiv.innerHTML = '<div class="success">✅ Word search generated successfully!</div>';
-                setTimeout(() => {
-                    errorDiv.innerHTML = '';
-                }, 3000);
+                errorDiv.innerHTML = '';
             }
             
             calculateGridSize() {
