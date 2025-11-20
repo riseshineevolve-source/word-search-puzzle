@@ -163,8 +163,12 @@
             background-clip: text;
             margin-bottom: 10px;
             animation: titleColorShine 16s ease-in-out infinite;
-            text-shadow: 0 0 18px rgba(138, 43, 226, 0.55), 0 0 28px rgba(255, 105, 180, 0.35);
+            text-shadow:
+                0 0 10px rgba(138, 43, 226, 0.55),
+                0 0 20px rgba(255, 105, 180, 0.35),
+                0 0 34px rgba(255, 215, 0, 0.22);
             letter-spacing: 2px;
+            filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.18));
         }
 
         @keyframes titleColorShine {
@@ -715,7 +719,7 @@
         .word-search {
             display: grid;
             gap: clamp(0px, 0.1vw, 1px);
-            padding: clamp(15px, 1.5vw, 25px);
+            padding: clamp(18px, 2vw, 32px);
             background: #000000;
             border-radius: 25px;
             border: 3px solid #8A2BE2;
@@ -724,14 +728,15 @@
                 0 0 120px rgba(138, 43, 226, 0.6),
                 inset 0 0 40px rgba(255, 215, 0, 0.2);
             position: relative;
-            width: 100%;
-            max-width: min(70vw, 640px);
-            max-height: min(70vh, 640px);
-            overflow: hidden;
+            width: auto;
+            max-width: none;
+            max-height: none;
+            overflow: visible;
             margin: 0 auto;
             aspect-ratio: 1;
             justify-content: center;
             align-content: center;
+            box-sizing: content-box;
         }
 
         .word-search::before {
@@ -2129,7 +2134,8 @@
 
                     case 'circle':
                         const distance = Math.sqrt(Math.pow(row - centerRow, 2) + Math.pow(col - centerCol, 2));
-                        return distance <= maxRadius;
+                        const adjustedRadius = maxRadius - 0.35;
+                        return distance <= adjustedRadius;
 
                     case 'hexagon':
                         const hexX = col - centerCol;
@@ -2153,9 +2159,9 @@
                         const leftHeart = Math.pow(x + 0.35, 2) + Math.pow(y - 0.25, 2) <= 0.18;
                         const rightHeart = Math.pow(x - 0.35, 2) + Math.pow(y - 0.25, 2) <= 0.18;
                         const middleHeart = (Math.abs(x) <= 0.45) && (y >= -0.1) && (y <= 0.4) && !(y >= 0.35 && Math.abs(x) <= 0.15);
-                        const bottomHeart = (y >= -0.8) && (y <= 0.1) && (Math.abs(x) <= Math.max(0.01, 0.7 - Math.abs(y + 0.2) * 1.5));
+                        const bottomHeart = (y >= -0.8) && (y <= 0.1) && (Math.abs(x) <= Math.max(0.01, 0.64 - Math.abs(y + 0.2) * 1.4));
                         const fillArea = (y >= -0.3) && (y <= 0.35) && (Math.abs(x) <= 0.52 - Math.abs(y - 0.1) * 0.25) && !(y >= 0.3 && Math.abs(x) <= 0.12);
-                        const sidesFill = (y >= -0.5) && (y <= 0.2) && (Math.abs(x) <= 0.48 - Math.abs(y) * 0.2);
+                        const sidesFill = (y >= -0.5) && (y <= 0.2) && (Math.abs(x) <= 0.44 - Math.abs(y) * 0.16);
 
                         return leftHeart || rightHeart || middleHeart || bottomHeart || fillArea || sidesFill;
 
@@ -2191,14 +2197,18 @@
                 const wordSearchDiv = document.getElementById('wordSearch');
                 wordSearchDiv.innerHTML = '';
 
-                const maxVisualSize = Math.min(window.innerWidth * 0.8, 620);
+                const maxVisualSize = Math.min(window.innerWidth * 0.82, 640);
                 const cellSize = Math.max(18, Math.min(30, maxVisualSize / this.gridSize));
                 const gridDimension = cellSize * this.gridSize;
+                const framePadding = Math.max(18, Math.min(36, Math.ceil(cellSize * 0.9)));
 
                 wordSearchDiv.style.gridTemplateColumns = `repeat(${this.gridSize}, ${cellSize}px)`;
                 wordSearchDiv.style.gridAutoRows = `${cellSize}px`;
                 wordSearchDiv.style.width = `${gridDimension}px`;
                 wordSearchDiv.style.height = `${gridDimension}px`;
+                wordSearchDiv.style.padding = `${framePadding}px`;
+                wordSearchDiv.style.minWidth = `${gridDimension}px`;
+                wordSearchDiv.style.minHeight = `${gridDimension}px`;
                 wordSearchDiv.style.gap = '0px';
                 
                 for (let i = 0; i < this.gridSize; i++) {
