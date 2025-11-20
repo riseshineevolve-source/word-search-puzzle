@@ -135,31 +135,31 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: linear-gradient(135deg, #000000 0%, #0d0d0d 35%, #1a1a1a 70%, #0d0d0d 100%);
+            background: #000000;
             backdrop-filter: blur(20px);
             border-radius: 30px;
             padding: 40px;
             box-shadow:
                 0 20px 60px rgba(0, 0, 0, 0.9),
-                0 0 100px rgba(138, 43, 226, 0.35),
-                inset 0 1px 0 rgba(138, 43, 226, 0.25);
+                0 0 80px rgba(138, 43, 226, 0.35),
+                inset 0 1px 0 rgba(0, 0, 0, 0.8);
             border: 3px solid #8A2BE2;
             position: relative;
-            animation: elegant-glow 24s ease-in-out infinite;
+            animation: elegant-glow 20s ease-in-out infinite;
         }
 
         .container::before {
             content: '';
             position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            background: linear-gradient(45deg, #8A2BE2, #9932CC, #ff69b4, #ffb6c1);
-            border-radius: 30px;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(135deg, #8A2BE2, #9932CC, #8A2BE2);
+            border-radius: 32px;
             z-index: -1;
-            animation: pulse 50s ease-in-out infinite;
-            opacity: 0.45;
+            animation: pulse 35s ease-in-out infinite;
+            opacity: 0.65;
         }
 
         .container::after {
@@ -171,10 +171,10 @@
             bottom: 0;
             background:
                 radial-gradient(circle at 20% 20%, rgba(138, 43, 226, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 105, 180, 0.06) 0%, transparent 50%);
+                radial-gradient(circle at 80% 80%, rgba(255, 105, 180, 0.08) 0%, transparent 55%);
             border-radius: 30px;
             pointer-events: none;
-            animation: shimmer 30s ease-in-out infinite alternate;
+            animation: shimmer 26s ease-in-out infinite alternate;
         }
 
         .header {
@@ -184,16 +184,16 @@
         }
 
         .title {
-            font-size: 3rem;
+            font-size: 2.6rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #8A2BE2, #9932CC, #ff69b4, #ffb6c1);
-            background-size: 400% 400%;
+            background: linear-gradient(45deg, #ffd700, #ffec9f, #ffd700);
+            background-size: 250% 250%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 15px;
-            animation: titleColorShine 20s ease-in-out infinite;
-            text-shadow: 0 0 15px rgba(138, 43, 226, 0.5), 0 0 25px rgba(138, 43, 226, 0.3);
+            margin-bottom: 10px;
+            animation: titleColorShine 18s ease-in-out infinite;
+            text-shadow: 0 0 18px rgba(255, 215, 0, 0.6), 0 0 28px rgba(255, 215, 0, 0.35);
             letter-spacing: 2px;
         }
 
@@ -251,15 +251,15 @@
         }
 
         .subtitle {
-            font-size: 1.15rem;
+            font-size: 1.35rem;
             margin-bottom: 25px;
-            background: linear-gradient(45deg, #8A2BE2, #ff69b4);
+            background: linear-gradient(45deg, #8A2BE2, #9932CC, #c27bf7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 12px rgba(138, 43, 226, 0.4);
-            font-weight: 300;
-            letter-spacing: 1px;
+            text-shadow: 0 0 18px rgba(138, 43, 226, 0.55);
+            font-weight: 700;
+            letter-spacing: 1.2px;
             animation: titleColorShine 24s ease-in-out infinite;
         }
 
@@ -489,9 +489,10 @@
 
         .controls {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 18px;
             margin-bottom: 24px;
+            justify-items: center;
         }
 
         .words-control {
@@ -500,35 +501,71 @@
 
         .control-group {
             background: #000000;
-            padding: 24px;
+            padding: 20px;
             border-radius: 22px;
             border: 3px solid #8A2BE2;
             position: relative;
             overflow: hidden;
             box-shadow:
                 0 15px 40px rgba(0, 0, 0, 0.7),
-                0 0 35px rgba(138, 43, 226, 0.7),
-                0 0 60px rgba(138, 43, 226, 0.4);
-            animation: purple-glow-slow 20s ease-in-out infinite;
+                0 0 35px rgba(138, 43, 226, 0.9),
+                0 0 60px rgba(138, 43, 226, 0.55);
+            animation: purple-glow-slow 16s ease-in-out infinite;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .control-group::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 22px;
+            border: 2px solid rgba(138, 43, 226, 0.4);
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.45), 0 0 50px rgba(138, 43, 226, 0.35);
+            animation: purple-glow-slow 14s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .panel-gold {
+            background: #060606;
+            border: 2px solid #ffd700;
+            border-radius: 18px;
+            padding: 14px;
+            box-shadow:
+                0 0 18px rgba(255, 215, 0, 0.35),
+                0 0 36px rgba(255, 215, 0, 0.22);
+            animation: elegant-glow 18s ease-in-out infinite;
+        }
+
+        .panel-pink {
+            background: #0d0d0d;
+            border: 2px solid #ff69b4;
+            border-radius: 14px;
+            padding: 10px;
+            box-shadow:
+                0 0 16px rgba(255, 105, 180, 0.45),
+                0 0 28px rgba(255, 105, 180, 0.25);
+            animation: pink-sparkle 18s ease-in-out infinite;
         }
 
         #wordPresets {
             width: 100%;
-            padding: 18px;
-            border: 3px solid #8A2BE2;
-            border-radius: 20px;
-            background: linear-gradient(145deg, #120b1f, #1b1034, #2b1752);
+            max-width: 440px;
+            padding: 14px;
+            border: 3px solid #ff69b4;
+            border-radius: 18px;
+            background: #0f0f0f;
             color: #ffffff;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             box-sizing: border-box;
             transition: all 0.4s ease;
             box-shadow:
                 0 10px 30px rgba(0, 0, 0, 0.7),
-                0 0 15px rgba(138, 43, 226, 0.8),
-                0 0 30px rgba(138, 43, 226, 0.5);
-            animation: purple-border-glow 20s ease-in-out infinite;
-            margin-bottom: 15px;
+                0 0 18px rgba(255, 105, 180, 0.6),
+                0 0 32px rgba(138, 43, 226, 0.35);
+            animation: pink-sparkle 22s ease-in-out infinite;
+            margin: 0 auto 15px auto;
             cursor: pointer;
         }
 
@@ -538,28 +575,12 @@
             font-weight: 600;
         }
 
-        .control-group::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #8A2BE2, #9932CC, #ff69b4, #8A2BE2);
-            opacity: 0.4;
-        }
-
-        .control-group::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 10% 10%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 90% 90%, rgba(255, 20, 147, 0.03) 0%, transparent 50%);
-            pointer-events: none;
+        #customWordsInfo {
+            background: #060606;
+            border: 2px solid #ffd700;
+            box-shadow:
+                0 0 18px rgba(255, 215, 0, 0.35),
+                0 0 32px rgba(255, 215, 0, 0.18);
         }
 
 
@@ -567,16 +588,21 @@
 
 
         .control-group h3 {
-            margin: 0 0 25px 0;
+            margin: 0 0 20px 0;
             color: #ffffff;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             text-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
             font-weight: 700;
             letter-spacing: 1px;
+            text-align: center;
         }
 
         .input-group {
             margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
         }
 
         label {
@@ -590,9 +616,10 @@
 
         input[type="text"] {
             width: 100%;
-            padding: 18px;
-            border: 3px solid #8A2BE2;
-            border-radius: 20px;
+            max-width: 440px;
+            padding: 14px;
+            border: 3px solid #ff69b4;
+            border-radius: 18px;
             background: #0f0f0f;
             color: #ffffff;
             font-size: 16px;
@@ -600,19 +627,20 @@
             transition: all 0.4s ease;
             box-shadow:
                 0 10px 30px rgba(0, 0, 0, 0.4),
-                0 0 15px rgba(138, 43, 226, 0.5),
-                0 0 30px rgba(153, 50, 204, 0.3);
-            animation: dark-purple-shimmer-slow 20s ease-in-out infinite;
+                0 0 18px rgba(255, 105, 180, 0.6),
+                0 0 32px rgba(153, 50, 204, 0.3);
+            animation: pink-sparkle 22s ease-in-out infinite;
+            margin: 0 auto;
         }
 
         input[type="text"]:focus {
             outline: none;
-            border-color: #9932CC;
+            border-color: #ff85c2;
             box-shadow:
                 0 10px 30px rgba(0, 0, 0, 0.5),
-                0 0 25px rgba(153, 50, 204, 0.8),
-                0 0 50px rgba(153, 50, 204, 0.5);
-            background: #1a1a1a;
+                0 0 25px rgba(255, 133, 194, 0.8),
+                0 0 50px rgba(153, 50, 204, 0.4);
+            background: #151515;
             transform: translateY(-2px);
         }
 
@@ -626,6 +654,19 @@
             flex-wrap: wrap;
             margin-bottom: 15px;
             justify-content: center;
+        }
+
+        .button-group.panel-pink {
+            width: 100%;
+            max-width: 440px;
+            justify-content: center;
+            background: #0d0d0d;
+            border: 2px solid #ff69b4;
+            border-radius: 14px;
+            padding: 12px;
+            box-shadow:
+                0 0 16px rgba(255, 105, 180, 0.45),
+                0 0 28px rgba(255, 105, 180, 0.25);
         }
 
         .btn {
@@ -1632,42 +1673,48 @@
 
         <div class="controls">
             <div class="control-group words-control">
-                <h3 style="text-align: center;">Words to Search</h3>
-                <div class="input-group">
-                    <label for="words" style="text-align: center;">Select predefined words or enter your own:</label>
-                    <select id="wordPresets">
-                        <option value="">Menu</option>
-                        <option value="january february march april may june july august september october november december">Months of a year</option>
-                        <option value="monday tuesday wednesday thursday friday saturday sunday">Days of a Week</option>
-                        <option value="zero one two three four five six seven eight nine ten">Numbers spelling 0-10</option>
-                        <option value="eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen">Numbers spelling 11-19</option>
-                        <option value="twenty thirty forty fifty sixty seventy eighty ninety hundred">Numbers spelling 20,30,40,50,60,70,80,90,100</option>
-                        <option value="custom">My own words search</option>
-                    </select>
-                    <input type="text" id="words" placeholder="e.g. cat dog house car flower" style="background: #0f0f0f; color: #ffffff; font-weight: 600; border: 3px solid #8A2BE2; box-shadow: 0 0 20px rgba(138, 43, 226, 0.5), 0 0 40px rgba(153, 50, 204, 0.3);">
-                    <div id="customWordsInfo" style="display: none; margin-top: 10px; padding: 12px; background: rgba(153, 50, 204, 0.12); border: 2px solid #8A2BE2; border-radius: 15px; color: #ffffff; font-size: 14px; text-align: center; box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);">
-                        💡 You can enter up to 12 words separated by spaces
+                <div class="panel-gold">
+                    <h3>Words to Search</h3>
+                    <div class="input-group panel-pink">
+                        <label for="words" style="text-align: center;">Select predefined words or enter your own:</label>
+                        <select id="wordPresets">
+                            <option value="">Menu</option>
+                            <option value="january february march april may june july august september october november december">Months of a year</option>
+                            <option value="monday tuesday wednesday thursday friday saturday sunday">Days of a Week</option>
+                            <option value="zero one two three four five six seven eight nine ten">Numbers spelling 0-10</option>
+                            <option value="eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen">Numbers spelling 11-19</option>
+                            <option value="twenty thirty forty fifty sixty seventy eighty ninety hundred">Numbers spelling 20,30,40,50,60,70,80,90,100</option>
+                            <option value="custom">My own words search</option>
+                        </select>
+                        <input type="text" id="words" placeholder="e.g. cat dog house car flower" style="background: #0f0f0f; color: #ffffff; font-weight: 700;">
+                        <div id="customWordsInfo" style="display: none; margin-top: 6px; padding: 12px; border-radius: 12px; color: #ffffff; font-size: 14px; text-align: center;">
+                            💡 Enter minimum 5 words and maximum 12 words separated by spaces.
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="control-group">
-                <h3 style="text-align: center;">Difficulty Level</h3>
-                <div class="button-group">
-                    <button class="btn active" data-difficulty="easy">Easy</button>
-                    <button class="btn" data-difficulty="medium">Medium</button>
-                    <button class="btn" data-difficulty="hard">Hard</button>
+                <div class="panel-gold">
+                    <h3>Difficulty Level</h3>
+                    <div class="button-group panel-pink">
+                        <button class="btn active" data-difficulty="easy">Easy</button>
+                        <button class="btn" data-difficulty="medium">Medium</button>
+                        <button class="btn" data-difficulty="hard">Hard</button>
+                    </div>
                 </div>
             </div>
 
             <div class="control-group">
-                <h3 style="text-align: center;">Grid Shape</h3>
-                <div class="button-group">
-                    <button class="btn active" data-shape="square">Square</button>
-                    <button class="btn" data-shape="circle">Circle</button>
-                    <button class="btn" data-shape="hexagon">Hexagon</button>
-                    <button class="btn" data-shape="diamond">Diamond</button>
-                    <button class="btn" data-shape="heart">Heart</button>
+                <div class="panel-gold">
+                    <h3>Grid Shape</h3>
+                    <div class="button-group panel-pink">
+                        <button class="btn active" data-shape="square">Square</button>
+                        <button class="btn" data-shape="circle">Circle</button>
+                        <button class="btn" data-shape="hexagon">Hexagon</button>
+                        <button class="btn" data-shape="diamond">Diamond</button>
+                        <button class="btn" data-shape="heart">Heart</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1852,8 +1899,8 @@
                 
                 this.words = finalWordsInput.toUpperCase().split(/\s+/).filter(word => word.length > 0);
                 
-                if (this.words.length < 1 || this.words.length > 12) {
-                    errorDiv.innerHTML = '<div class="error">⚠️ Proszę wprowadzić od 1 do 12 słów!</div>';
+                if (this.words.length < 5 || this.words.length > 12) {
+                    errorDiv.innerHTML = '<div class="error">⚠️ Please enter between 5 and 12 words to build a solid shape!</div>';
                     return;
                 }
                 
@@ -1921,27 +1968,25 @@
                 const totalLetters = this.words.reduce((sum, word) => sum + word.length, 0);
                 const wordCount = this.words.length;
                 const maxWordLength = Math.max(...this.words.map(word => word.length));
-                
-                // Mniejszy rozmiar siatki
-                let baseSize = Math.max(maxWordLength + 2, Math.sqrt(totalLetters * 2.5));
-                
-                // Dostosuj do trudności i liczby słów
+
+                const densityFactor = wordCount <= 6 ? 1.6 : 2.3;
+                let baseSize = Math.max(maxWordLength + 2, Math.sqrt(totalLetters * densityFactor));
+
                 if (this.difficulty === 'easy') {
-                    baseSize = Math.max(baseSize, 8);
+                    baseSize = Math.max(baseSize, 7.5);
                 } else if (this.difficulty === 'medium') {
-                    baseSize = Math.max(baseSize, 10);
+                    baseSize = Math.max(baseSize, 9);
                 } else {
-                    baseSize = Math.max(baseSize, 12);
+                    baseSize = Math.max(baseSize, 10);
                 }
-                
-                // Dodatkowy rozmiar dla większej liczby słów
-                if (wordCount > 6) {
+
+                if (wordCount > 8) {
                     baseSize += 1;
                 }
-                if (wordCount > 9) {
+                if (wordCount > 10) {
                     baseSize += 1;
                 }
-                
+
                 this.gridSize = Math.min(Math.ceil(baseSize), 15);
             }
             
@@ -2169,22 +2214,21 @@
                         return (normalizedX * normalizedX + normalizedY * normalizedY) <= 1;
 
                     case 'hexagon':
-                        const hexDx = Math.abs(col - centerCol);
-                        const hexDy = Math.abs(row - centerRow);
-                        return hexDx <= maxRadius &&
-                               hexDy <= maxRadius &&
-                               (hexDx + hexDy / 2) <= maxRadius;
+                        const hexX = col - centerCol + 0.5;
+                        const hexY = row - centerRow + 0.5;
+                        const hexZ = -hexX - hexY;
+                        const hexDistance = Math.max(Math.abs(hexX), Math.abs(hexY), Math.abs(hexZ));
+                        return hexDistance <= maxRadius - 0.2;
 
                     case 'diamond':
                         return Math.abs(row - centerRow) + Math.abs(col - centerCol) <= maxRadius;
 
                     case 'heart':
-                        const xHeart = (col + 0.5 - centerCol) / (maxRadius + 0.15);
-                        const yHeart = (row + 0.5 - centerRow) / (maxRadius + 0.15);
+                        const xHeart = (col + 0.5 - centerCol) / ((maxRadius + 0.1) * 0.9);
+                        const yHeart = (row + 0.5 - centerRow) / ((maxRadius + 0.1) * 0.75);
 
-                        // Klasyczne równanie serca dla równych proporcji
                         const heartEquation = Math.pow(xHeart * xHeart + yHeart * yHeart - 1, 3) - xHeart * xHeart * Math.pow(yHeart, 3);
-                        return heartEquation <= 0;
+                        return heartEquation <= 0.02;
 
                     default:
                         return true;
@@ -2821,7 +2865,7 @@
                 // Automatycznie otwórz dialog drukowania/zapisu jako PDF
                 pdfWindow.onload = () => {
                     pdfWindow.focus();
-                    setTimeout(() => pdfWindow.print(), 300);
+                    setTimeout(() => pdfWindow.print(), 800);
                 };
             }
 
@@ -2915,6 +2959,8 @@
                             background: white;
                             color: black;
                             line-height: 1.4;
+                            -webkit-print-color-adjust: exact;
+                            print-color-adjust: exact;
                         }
                         
                         .pdf-container {
