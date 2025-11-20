@@ -2190,7 +2190,16 @@
             renderGrid() {
                 const wordSearchDiv = document.getElementById('wordSearch');
                 wordSearchDiv.innerHTML = '';
-                wordSearchDiv.style.gridTemplateColumns = `repeat(${this.gridSize}, 1fr)`;
+
+                const maxVisualSize = Math.min(window.innerWidth * 0.8, 620);
+                const cellSize = Math.max(18, Math.min(30, maxVisualSize / this.gridSize));
+                const gridDimension = cellSize * this.gridSize;
+
+                wordSearchDiv.style.gridTemplateColumns = `repeat(${this.gridSize}, ${cellSize}px)`;
+                wordSearchDiv.style.gridAutoRows = `${cellSize}px`;
+                wordSearchDiv.style.width = `${gridDimension}px`;
+                wordSearchDiv.style.height = `${gridDimension}px`;
+                wordSearchDiv.style.gap = '0px';
                 
                 for (let i = 0; i < this.gridSize; i++) {
                     for (let j = 0; j < this.gridSize; j++) {
