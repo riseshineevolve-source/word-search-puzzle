@@ -77,11 +77,6 @@
             100% { opacity: 0.2; transform: scale(1) rotate(0deg); }
         }
 
-        @keyframes elegantBoxFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
-
         @keyframes elegantBoxGlow {
             0%, 100% {
                 box-shadow:
@@ -195,7 +190,7 @@
                 0 0 60px rgba(138, 43, 226, 0.4);
             border: 3px solid #8A2BE2;
             position: relative;
-            animation: elegantBoxFloat 10s ease-in-out infinite, elegantBoxGlow 7s ease-in-out infinite;
+            animation: elegantBoxGlow 7s ease-in-out infinite;
         }
 
         .header {
@@ -588,7 +583,7 @@
             max-width: 480px;
             width: 100%;
             justify-self: center;
-            animation: elegantBoxFloat 10s ease-in-out infinite, elegantBoxGlow 8s ease-in-out infinite;
+            animation: elegantBoxGlow 8s ease-in-out infinite;
         }
 
         .panel-gold {
@@ -597,7 +592,7 @@
             border-radius: 18px;
             padding: 8px 0;
             box-shadow: none;
-            animation: elegantBoxFloat 12s ease-in-out infinite, elegantBoxGlow 9s ease-in-out infinite;
+            animation: none;
         }
 
         .panel-pink {
@@ -608,7 +603,7 @@
             box-shadow:
                 0 0 25px rgba(255, 105, 180, 0.6),
                 0 0 45px rgba(255, 105, 180, 0.35);
-            animation: elegantBoxFloat 12s ease-in-out infinite, elegantBoxGlow 9s ease-in-out infinite;
+            animation: elegantBoxGlow 9s ease-in-out infinite;
         }
 
         #wordPresets {
@@ -838,7 +833,7 @@
             justify-content: center;
             align-content: center;
             box-sizing: content-box;
-            animation: elegantBoxFloat 11s ease-in-out infinite, elegantBoxGlow 9s ease-in-out infinite, frame-sparkle 16s ease-in-out infinite;
+            animation: elegantBoxGlow 9s ease-in-out infinite, frame-sparkle 16s ease-in-out infinite;
         }
 
         .word-search::before {
@@ -1059,7 +1054,7 @@
             box-shadow:
                 0 0 25px rgba(138, 43, 226, 0.7),
                 0 0 45px rgba(138, 43, 226, 0.4);
-            animation: elegantBoxFloat 11s ease-in-out infinite, elegantBoxGlow 9s ease-in-out infinite;
+            animation: elegantBoxGlow 9s ease-in-out infinite;
         }
 
         .stats h3 {
@@ -1731,7 +1726,7 @@
             <div class="control-group words-control">
                 <div class="panel-gold">
                     <h3>Words to Search</h3>
-                    <div class="input-group panel-pink">
+                    <div class="input-group">
                         <label for="words" style="text-align: center;">Select predefined words or enter your own:</label>
                         <select id="wordPresets">
                             <option value="">Menu</option>
