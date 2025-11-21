@@ -77,6 +77,41 @@
             100% { opacity: 0.2; transform: scale(1) rotate(0deg); }
         }
 
+        @keyframes elegantBoxFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        @keyframes elegantBoxGlow {
+            0%, 100% {
+                box-shadow:
+                    0 0 30px rgba(255, 215, 0, 0.4),
+                    0 0 60px rgba(255, 215, 0, 0.2),
+                    0 0 90px rgba(255, 215, 0, 0.1),
+                    inset 0 0 20px rgba(138, 43, 226, 0.08);
+                border-color: rgba(255, 215, 0, 0.8);
+            }
+            50% {
+                box-shadow:
+                    0 0 40px rgba(255, 215, 0, 0.6),
+                    0 0 80px rgba(255, 215, 0, 0.3),
+                    0 0 120px rgba(255, 215, 0, 0.15),
+                    inset 0 0 30px rgba(138, 43, 226, 0.12);
+                border-color: rgba(255, 215, 0, 1);
+            }
+        }
+
+        @keyframes elegantBtnShine {
+            0%, 100% {
+                background-position: 0% 50%;
+                box-shadow: 0 0 16px rgba(255, 215, 0, 0.2), 0 0 30px rgba(255, 105, 180, 0.15);
+            }
+            50% {
+                background-position: 100% 50%;
+                box-shadow: 0 0 22px rgba(255, 215, 0, 0.35), 0 0 40px rgba(255, 105, 180, 0.2);
+            }
+        }
+
         @keyframes frame-sparkle {
             0%, 100% {
                 box-shadow:
@@ -160,7 +195,7 @@
                 0 0 60px rgba(138, 43, 226, 0.4);
             border: 3px solid #8A2BE2;
             position: relative;
-            animation: frame-sparkle 12s ease-in-out infinite;
+            animation: elegantBoxFloat 10s ease-in-out infinite, elegantBoxGlow 7s ease-in-out infinite;
         }
 
         .header {
@@ -172,35 +207,35 @@
         .title {
             font-size: 2.6rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #8A2BE2, #ff69b4, #c71585, #9932CC);
-            background-size: 220% 220%;
+            background: linear-gradient(45deg, #8A2BE2, #9932CC, #ff69b4, #ffb6c1);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 10px;
-            animation: titleColorShine 12s ease-in-out infinite;
-            text-shadow:
-                0 0 12px rgba(138, 43, 226, 0.6),
-                0 0 22px rgba(255, 105, 180, 0.4),
-                0 0 40px rgba(255, 215, 0, 0.28);
+            animation: titleColorShine 20s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(138, 43, 226, 0.8), 0 0 50px rgba(138, 43, 226, 0.5);
             letter-spacing: 2px;
-            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.28));
             position: relative;
             display: inline-block;
+            filter: brightness(1.15);
         }
 
         @keyframes titleColorShine {
-            0% {
+            0%, 100% {
                 background-position: 0% 50%;
-                text-shadow: 0 0 15px rgba(138, 43, 226, 0.5), 0 0 25px rgba(138, 43, 226, 0.3);
+                filter: brightness(1.2);
+                text-shadow: 0 0 30px rgba(138, 43, 226, 0.8), 0 0 50px rgba(138, 43, 226, 0.5);
             }
-            50% {
+            33% {
+                background-position: 50% 0%;
+                filter: brightness(1.5);
+                text-shadow: 0 0 40px rgba(255, 105, 180, 1), 0 0 70px rgba(255, 105, 180, 0.7);
+            }
+            66% {
                 background-position: 100% 50%;
-                text-shadow: 0 0 20px rgba(153, 50, 204, 0.6), 0 0 35px rgba(255, 105, 180, 0.4);
-            }
-            100% {
-                background-position: 0% 50%;
-                text-shadow: 0 0 15px rgba(138, 43, 226, 0.5), 0 0 25px rgba(138, 43, 226, 0.3);
+                filter: brightness(1.7);
+                text-shadow: 0 0 50px rgba(255, 105, 180, 1), 0 0 80px rgba(255, 105, 180, 0.8);
             }
         }
 
@@ -255,12 +290,45 @@
         }
 
         .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 25px;
-            color: #8A2BE2;
-            text-shadow: 0 0 18px rgba(138, 43, 226, 0.6), 0 0 28px rgba(255, 105, 180, 0.25);
             font-weight: 800;
             letter-spacing: 1.2px;
+            background: linear-gradient(45deg, #8A2BE2, #ff69b4, #9932CC, #ff1493, #8A2BE2, #ff69b4);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 8px rgba(138, 43, 226, 0.6), 0 0 12px rgba(255, 105, 180, 0.3), 0 0 18px rgba(138, 43, 226, 0.2);
+            animation: subtitleShine 16s infinite ease-in-out;
+        }
+
+        @keyframes subtitleShine {
+            0% {
+                background-position: 0% 50%;
+                filter: brightness(1.2);
+                text-shadow: 0 0 8px rgba(138, 43, 226, 0.6), 0 0 12px rgba(255, 105, 180, 0.3), 0 0 18px rgba(138, 43, 226, 0.2);
+            }
+            25% {
+                background-position: 50% 0%;
+                filter: brightness(1.4);
+                text-shadow: 0 0 12px rgba(153, 50, 204, 0.8), 0 0 18px rgba(255, 105, 180, 0.35), 0 0 22px rgba(138, 43, 226, 0.25);
+            }
+            50% {
+                background-position: 100% 50%;
+                filter: brightness(1.5);
+                text-shadow: 0 0 14px rgba(255, 105, 180, 0.9), 0 0 20px rgba(153, 50, 204, 0.5), 0 0 26px rgba(138, 43, 226, 0.3);
+            }
+            75% {
+                background-position: 50% 100%;
+                filter: brightness(1.35);
+                text-shadow: 0 0 10px rgba(138, 43, 226, 0.7), 0 0 16px rgba(255, 105, 180, 0.32), 0 0 22px rgba(153, 50, 204, 0.28);
+            }
+            100% {
+                background-position: 0% 50%;
+                filter: brightness(1.2);
+                text-shadow: 0 0 8px rgba(138, 43, 226, 0.6), 0 0 12px rgba(255, 105, 180, 0.3), 0 0 18px rgba(138, 43, 226, 0.2);
+            }
         }
 
         .info-text .word-rise, .kids-text .word-rise {
@@ -520,7 +588,7 @@
             max-width: 480px;
             width: 100%;
             justify-self: center;
-            animation: frame-sparkle 14s ease-in-out infinite;
+            animation: elegantBoxFloat 10s ease-in-out infinite, elegantBoxGlow 8s ease-in-out infinite;
         }
 
         .panel-gold {
@@ -529,6 +597,7 @@
             border-radius: 18px;
             padding: 8px 0;
             box-shadow: none;
+            animation: elegantBoxFloat 12s ease-in-out infinite, elegantBoxGlow 9s ease-in-out infinite;
         }
 
         .panel-pink {
@@ -539,6 +608,7 @@
             box-shadow:
                 0 0 25px rgba(255, 105, 180, 0.6),
                 0 0 45px rgba(255, 105, 180, 0.35);
+            animation: elegantBoxFloat 12s ease-in-out infinite, elegantBoxGlow 9s ease-in-out infinite;
         }
 
         #wordPresets {
@@ -768,7 +838,7 @@
             justify-content: center;
             align-content: center;
             box-sizing: content-box;
-            animation: frame-sparkle 16s ease-in-out infinite;
+            animation: elegantBoxFloat 11s ease-in-out infinite, elegantBoxGlow 9s ease-in-out infinite, frame-sparkle 16s ease-in-out infinite;
         }
 
         .word-search::before {
@@ -782,6 +852,23 @@
             border-radius: 25px;
             z-index: -1;
             opacity: 0.35;
+        }
+
+        .word-search::after {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            background-image:
+                radial-gradient(1.2px 1.2px at 15% 20%, rgba(255, 215, 0, 0.55) 0 50%, transparent 55%),
+                radial-gradient(1px 1px at 70% 40%, rgba(255, 215, 0, 0.4) 0 50%, transparent 55%),
+                radial-gradient(1.1px 1.1px at 40% 75%, rgba(255, 215, 0, 0.45) 0 50%, transparent 55%);
+            background-size: 260px 260px, 280px 280px, 320px 320px;
+            background-repeat: repeat;
+            pointer-events: none;
+            opacity: 0.45;
+            animation: slow-twinkle-soft 26s ease-in-out infinite alternate;
+            border-radius: 20px;
+            z-index: 0;
         }
 
         .cell {
@@ -926,6 +1013,7 @@
                 0 0 8px rgba(138, 43, 226, 0.8),
                 0 0 16px rgba(138, 43, 226, 0.5),
                 0 0 24px rgba(138, 43, 226, 0.3);
+            animation: elegantBoxGlow 10s ease-in-out infinite;
         }
 
         .word-item::before {
@@ -971,6 +1059,7 @@
             box-shadow:
                 0 0 25px rgba(138, 43, 226, 0.7),
                 0 0 45px rgba(138, 43, 226, 0.4);
+            animation: elegantBoxFloat 11s ease-in-out infinite, elegantBoxGlow 9s ease-in-out infinite;
         }
 
         .stats h3 {
@@ -1206,10 +1295,10 @@
             transform: translate(-50%, -50%);
             background: #000000;
             color: #ffd700;
-            padding: 30px 48px;
+            padding: 26px 62px;
             border-radius: 26px;
-            font-size: 1.8rem;
-            font-weight: 900;
+            font-size: 1.45rem;
+            font-weight: 850;
             text-align: center;
             z-index: 1001;
             animation: victory-bounce 0.6s ease-out, frame-sparkle 10s ease-in-out infinite;
@@ -1222,6 +1311,16 @@
                 0 0 20px rgba(255, 215, 0, 0.9),
                 0 0 35px rgba(138, 43, 226, 0.6);
             overflow: hidden;
+            min-width: 520px;
+            line-height: 1.5;
+        }
+
+        .victory-banner .gold-text {
+            color: #ffd700;
+        }
+
+        .victory-banner .purple-text {
+            color: #c38bff;
         }
 
         .victory-banner::before {
@@ -2671,14 +2770,14 @@
 
                 const banner = document.createElement('div');
                 banner.className = 'victory-banner';
-                banner.innerHTML = `<div>Mission accomplished! The Happy Makers officially promote you to Chief Word Finder!</div>`;
+                banner.innerHTML = `<div class="gold-text">Mission accomplished!</div><div class="purple-text">The Happy Makers officially promote you to</div><div class="purple-text">Chief Word Finder!</div>`;
                 puzzleContainer.appendChild(banner);
 
-                // Usuń animacje po 5 sekundach
+                // Usuń animacje po krótszym czasie
                 setTimeout(() => {
                     if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
                     if (banner.parentNode) banner.parentNode.removeChild(banner);
-                }, 5000);
+                }, 3600);
             }
             
             createConfetti(overlay) {
