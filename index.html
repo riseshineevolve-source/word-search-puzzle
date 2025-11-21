@@ -263,25 +263,6 @@
             }
         }
 
-        .title::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.28), transparent 45%),
-                        radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.25), transparent 45%);
-            mix-blend-mode: screen;
-            filter: blur(1px);
-            z-index: -1;
-            animation: shimmer-text 10s linear infinite;
-        }
-
-        @keyframes shimmer-text {
-            0%, 100% { background-position: 0% 50%; }
-            25% { background-position: 100% 50%; }
-            50% { background-position: 200% 50%; }
-            75% { background-position: 300% 50%; }
-        }
-
         @keyframes purple-glow-slow {
             0%, 100% { 
                 border-color: #daa520;
