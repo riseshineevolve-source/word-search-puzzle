@@ -26,17 +26,17 @@
             width: 100%;
             height: 100%;
             background-image:
-                radial-gradient(1.5px 1.5px at 12% 18%, rgba(255, 215, 128, 0.9) 0 50%, transparent 60%),
-                radial-gradient(1px 1px at 48% 72%, rgba(255, 210, 120, 0.75) 0 50%, transparent 60%),
-                radial-gradient(1.2px 1.2px at 76% 26%, rgba(255, 230, 180, 0.8) 0 50%, transparent 60%),
+                radial-gradient(1.4px 1.4px at 12% 18%, rgba(255, 215, 128, 0.9) 0 50%, transparent 60%),
+                radial-gradient(1px 1px at 48% 72%, rgba(255, 210, 120, 0.7) 0 50%, transparent 60%),
+                radial-gradient(1.1px 1.1px at 76% 26%, rgba(255, 230, 180, 0.78) 0 50%, transparent 60%),
                 radial-gradient(1px 1px at 30% 55%, rgba(255, 215, 120, 0.6) 0 50%, transparent 60%),
-                radial-gradient(1.2px 1.2px at 66% 88%, rgba(255, 215, 140, 0.75) 0 50%, transparent 60%);
+                radial-gradient(1.1px 1.1px at 66% 88%, rgba(255, 215, 140, 0.72) 0 50%, transparent 60%);
             background-size: 360px 360px, 440px 440px, 520px 520px, 380px 380px, 480px 480px;
             background-repeat: repeat;
-            animation: slow-twinkle 22s ease-in-out infinite alternate;
+            animation: slow-twinkle 28s ease-in-out infinite alternate;
             pointer-events: none;
             z-index: -1;
-            opacity: 0.65;
+            opacity: 0.6;
         }
 
         body::after {
@@ -53,10 +53,10 @@
                 radial-gradient(1.2px 1.2px at 10% 80%, rgba(255, 210, 130, 0.55) 0 50%, transparent 60%);
             background-size: 520px 520px, 440px 440px, 600px 600px, 500px 500px;
             background-repeat: repeat;
-            animation: slow-twinkle-soft 28s ease-in-out infinite alternate;
+            animation: slow-twinkle-soft 32s ease-in-out infinite alternate;
             pointer-events: none;
             z-index: -1;
-            opacity: 0.5;
+            opacity: 0.45;
         }
 
         @keyframes slow-twinkle {
@@ -75,6 +75,21 @@
             0% { opacity: 0.2; transform: scale(1) rotate(0deg); }
             50% { opacity: 0.3; transform: scale(1.005) rotate(0.1deg); }
             100% { opacity: 0.2; transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes frame-sparkle {
+            0%, 100% {
+                box-shadow:
+                    0 0 35px rgba(138, 43, 226, 0.6),
+                    0 0 60px rgba(138, 43, 226, 0.35),
+                    0 0 14px rgba(255, 215, 0, 0.18);
+            }
+            50% {
+                box-shadow:
+                    0 0 45px rgba(138, 43, 226, 0.75),
+                    0 0 75px rgba(138, 43, 226, 0.45),
+                    0 0 24px rgba(255, 215, 0, 0.32);
+            }
         }
 
 
@@ -145,6 +160,7 @@
                 0 0 60px rgba(138, 43, 226, 0.4);
             border: 3px solid #8A2BE2;
             position: relative;
+            animation: frame-sparkle 12s ease-in-out infinite;
         }
 
         .header {
@@ -162,13 +178,15 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 10px;
-            animation: titleColorShine 16s ease-in-out infinite;
+            animation: titleColorShine 12s ease-in-out infinite;
             text-shadow:
-                0 0 10px rgba(138, 43, 226, 0.55),
-                0 0 20px rgba(255, 105, 180, 0.35),
-                0 0 34px rgba(255, 215, 0, 0.22);
+                0 0 12px rgba(138, 43, 226, 0.6),
+                0 0 22px rgba(255, 105, 180, 0.4),
+                0 0 40px rgba(255, 215, 0, 0.28);
             letter-spacing: 2px;
-            filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.18));
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.28));
+            position: relative;
+            display: inline-block;
         }
 
         @keyframes titleColorShine {
@@ -184,6 +202,18 @@
                 background-position: 0% 50%;
                 text-shadow: 0 0 15px rgba(138, 43, 226, 0.5), 0 0 25px rgba(138, 43, 226, 0.3);
             }
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.28), transparent 45%),
+                        radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.25), transparent 45%);
+            mix-blend-mode: screen;
+            filter: blur(1px);
+            z-index: -1;
+            animation: shimmer-text 10s linear infinite;
         }
 
         @keyframes shimmer-text {
@@ -490,6 +520,7 @@
             max-width: 480px;
             width: 100%;
             justify-self: center;
+            animation: frame-sparkle 14s ease-in-out infinite;
         }
 
         .panel-gold {
@@ -737,6 +768,7 @@
             justify-content: center;
             align-content: center;
             box-sizing: content-box;
+            animation: frame-sparkle 16s ease-in-out infinite;
         }
 
         .word-search::before {
@@ -837,6 +869,7 @@
             gap: 12px;
             margin-left: auto;
             margin-right: 20px;
+            animation: frame-sparkle 15s ease-in-out infinite;
         }
 
         .sidebar::before {
@@ -1179,7 +1212,7 @@
             font-weight: 900;
             text-align: center;
             z-index: 1001;
-            animation: victory-bounce 0.6s ease-out;
+            animation: victory-bounce 0.6s ease-out, frame-sparkle 10s ease-in-out infinite;
             box-shadow:
                 0 0 35px rgba(138, 43, 226, 0.7),
                 0 0 60px rgba(138, 43, 226, 0.4);
@@ -2616,21 +2649,21 @@
                 overlay.className = 'celebration-overlay';
                 document.body.appendChild(overlay);
                 
-                // Generuj konfetti - więcej i dłużej
-                for (let i = 0; i < 150; i++) {
+                // Generuj konfetti krócej i szybciej
+                for (let i = 0; i < 90; i++) {
                     setTimeout(() => {
                         this.createConfetti(overlay);
-                    }, i * 40);
+                    }, i * 28);
                 }
-                
-                // Dodatkowa fala konfetti po 3 sekundach
+
+                // Dodatkowa krótka fala konfetti
                 setTimeout(() => {
-                    for (let i = 0; i < 80; i++) {
+                    for (let i = 0; i < 40; i++) {
                         setTimeout(() => {
                             this.createConfetti(overlay);
-                        }, i * 60);
+                        }, i * 40);
                     }
-                }, 3000);
+                }, 1400);
                 
                 // Pokaż banner zwycięstwa na wyszukiwance
                 const puzzleContainer = document.querySelector('.puzzle-container');
@@ -2638,14 +2671,14 @@
 
                 const banner = document.createElement('div');
                 banner.className = 'victory-banner';
-                banner.innerHTML = `<div>Congratulations! You found all words.</div>`;
+                banner.innerHTML = `<div>Mission accomplished! The Happy Makers officially promote you to Chief Word Finder!</div>`;
                 puzzleContainer.appendChild(banner);
-                
-                // Usuń animacje po 8 sekundach
+
+                // Usuń animacje po 5 sekundach
                 setTimeout(() => {
                     if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
                     if (banner.parentNode) banner.parentNode.removeChild(banner);
-                }, 8000);
+                }, 5000);
             }
             
             createConfetti(overlay) {
@@ -2658,8 +2691,8 @@
                 
                 // Losowa pozycja startowa i właściwości animacji
                 confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.animationDuration = (Math.random() * 4 + 3) + 's';
-                confetti.style.animationDelay = Math.random() * 1 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2.5) + 's';
+                confetti.style.animationDelay = Math.random() * 0.8 + 's';
                 
                 // Dodaj losowe obroty dla większej różnorodności
                 const randomRotation = Math.random() * 360;
@@ -2672,7 +2705,7 @@
                     if (confetti.parentNode) {
                         confetti.parentNode.removeChild(confetti);
                     }
-                }, 7000);
+                }, 5200);
             }
             
 
