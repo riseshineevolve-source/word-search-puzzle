@@ -186,11 +186,40 @@
             padding: 40px;
             box-shadow:
                 0 20px 60px rgba(0, 0, 0, 0.9),
-                0 0 35px rgba(138, 43, 226, 0.7),
-                0 0 60px rgba(138, 43, 226, 0.4);
+                0 0 40px rgba(138, 43, 226, 0.75),
+                0 0 70px rgba(138, 43, 226, 0.45);
             border: 3px solid #8A2BE2;
             position: relative;
-            animation: elegantBoxGlow 7s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        .container > *:not(.sparkles) {
+            position: relative;
+            z-index: 2;
+        }
+
+        .sparkles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: sparkleTwinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes sparkleTwinkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
         }
 
         .header {
@@ -583,27 +612,14 @@
             max-width: 480px;
             width: 100%;
             justify-self: center;
-            animation: elegantBoxGlow 8s ease-in-out infinite;
         }
 
-        .panel-gold {
+        .panel-gold,
+        .panel-pink {
             background: transparent;
             border: none;
-            border-radius: 18px;
-            padding: 8px 0;
+            padding: 0;
             box-shadow: none;
-            animation: none;
-        }
-
-        .panel-pink {
-            background: #000000;
-            border: 3px solid #ff69b4;
-            border-radius: 14px;
-            padding: 10px;
-            box-shadow:
-                0 0 25px rgba(255, 105, 180, 0.6),
-                0 0 45px rgba(255, 105, 180, 0.35);
-            animation: elegantBoxGlow 9s ease-in-out infinite;
         }
 
         #wordPresets {
@@ -704,19 +720,6 @@
             flex-wrap: wrap;
             margin-bottom: 15px;
             justify-content: center;
-        }
-
-        .button-group.panel-pink {
-            width: 100%;
-            max-width: 520px;
-            justify-content: center;
-            background: #000000;
-            border: 3px solid #ff69b4;
-            border-radius: 14px;
-            padding: 12px;
-            box-shadow:
-                0 0 25px rgba(255, 105, 180, 0.6),
-                0 0 45px rgba(255, 105, 180, 0.35);
         }
 
         .btn {
@@ -1717,6 +1720,7 @@
 </head>
 <body>
     <div class="container">
+        <div class="sparkles" id="sparkles"></div>
         <div class="header">
             <h1 class="title">Word Search Puzzle</h1>
             <p class="subtitle">Find all hidden words in the magical letter grid</p>
@@ -1724,49 +1728,43 @@
 
         <div class="controls">
             <div class="control-group words-control">
-                <div class="panel-gold">
-                    <h3>Words to Search</h3>
-                    <div class="input-group">
-                        <label for="words" style="text-align: center;">Select predefined words or enter your own:</label>
-                        <select id="wordPresets">
-                            <option value="">Menu</option>
-                            <option value="january february march april may june july august september october november december">Months of a year</option>
-                            <option value="monday tuesday wednesday thursday friday saturday sunday">Days of a Week</option>
-                            <option value="zero one two three four five six seven eight nine ten">Numbers spelling 0-10</option>
-                            <option value="eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen">Numbers spelling 11-19</option>
-                            <option value="twenty thirty forty fifty sixty seventy eighty ninety hundred">Numbers spelling 20,30,40,50,60,70,80,90,100</option>
-                            <option value="custom">My own words search</option>
-                        </select>
-                        <input type="text" id="words" placeholder="e.g. cat dog house car flower" style="background: #0f0f0f; color: #ffffff; font-weight: 700;">
-                        <div id="customWordsInfo" style="display: none; margin-top: 6px; padding: 12px; border-radius: 12px; color: #ffffff; font-size: 14px; text-align: center;">
-                            💡 Enter minimum 5 words and maximum 12 words separated by spaces.
-                        </div>
+                <h3>Words to Search</h3>
+                <div class="input-group">
+                    <label for="words" style="text-align: center;">Select predefined words or enter your own:</label>
+                    <select id="wordPresets">
+                        <option value="">Menu</option>
+                        <option value="january february march april may june july august september october november december">Months of a year</option>
+                        <option value="monday tuesday wednesday thursday friday saturday sunday">Days of a Week</option>
+                        <option value="zero one two three four five six seven eight nine ten">Numbers spelling 0-10</option>
+                        <option value="eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen">Numbers spelling 11-19</option>
+                        <option value="twenty thirty forty fifty sixty seventy eighty ninety hundred">Numbers spelling 20,30,40,50,60,70,80,90,100</option>
+                        <option value="custom">My own words search</option>
+                    </select>
+                    <input type="text" id="words" placeholder="e.g. cat dog house car flower" style="background: #0f0f0f; color: #ffffff; font-weight: 700;">
+                    <div id="customWordsInfo" style="display: none; margin-top: 6px; padding: 12px; border-radius: 12px; color: #ffffff; font-size: 14px; text-align: center;">
+                        💡 Enter minimum 5 words and maximum 12 words separated by spaces.
                     </div>
                 </div>
             </div>
 
             <div class="control-row">
                 <div class="control-group">
-                    <div class="panel-gold">
-                        <h3>Grid Shape</h3>
-                        <div class="button-group panel-pink">
-                            <button class="btn active" data-shape="square">Square</button>
-                            <button class="btn" data-shape="circle">Circle</button>
-                            <button class="btn" data-shape="hexagon">Hexagon</button>
-                            <button class="btn" data-shape="diamond">Diamond</button>
-                            <button class="btn" data-shape="heart">Heart</button>
-                        </div>
+                    <h3>Grid Shape</h3>
+                    <div class="button-group">
+                        <button class="btn active" data-shape="square">Square</button>
+                        <button class="btn" data-shape="circle">Circle</button>
+                        <button class="btn" data-shape="hexagon">Hexagon</button>
+                        <button class="btn" data-shape="diamond">Diamond</button>
+                        <button class="btn" data-shape="heart">Heart</button>
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <div class="panel-gold">
-                        <h3>Difficulty Level</h3>
-                        <div class="button-group panel-pink">
-                            <button class="btn active" data-difficulty="easy">Easy</button>
-                            <button class="btn" data-difficulty="medium">Medium</button>
-                            <button class="btn" data-difficulty="hard">Hard</button>
-                        </div>
+                    <h3>Difficulty Level</h3>
+                    <div class="button-group">
+                        <button class="btn active" data-difficulty="easy">Easy</button>
+                        <button class="btn" data-difficulty="medium">Medium</button>
+                        <button class="btn" data-difficulty="hard">Hard</button>
                     </div>
                 </div>
             </div>
@@ -1829,6 +1827,21 @@
     </div>
 
     <script>
+        function createSparkles() {
+            const sparklesContainer = document.getElementById('sparkles');
+            if (!sparklesContainer) return;
+
+            const sparkleCount = 50;
+            for (let i = 0; i < sparkleCount; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 3 + 's';
+                sparklesContainer.appendChild(sparkle);
+            }
+        }
+
         class WordSearchGenerator {
             constructor() {
                 this.grid = [];
@@ -3220,6 +3233,7 @@
 
         // Inicjalizuj generator po załadowaniu strony
         document.addEventListener('DOMContentLoaded', () => {
+            createSparkles();
             new WordSearchGenerator();
         });
     </script>
